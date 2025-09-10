@@ -1,0 +1,36 @@
+2025/09/10 08:04:07 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'bookingsystem.loginform' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `LoginForm`.
+in E:\yii-bookingsystem\protected\controllers\SiteController.php (80)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/10 08:04:07 [error] [exception.CDbException] CDbException: The table "LoginForm" for active record class "LoginForm" cannot be found in the database. in C:\yii-1.1.18\framework\db\ar\CActiveRecord.php:2390
+Stack trace:
+#0 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(413): CActiveRecordMetaData->__construct()
+#1 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
+#2 E:\yii-bookingsystem\protected\controllers\SiteController.php(80): CActiveRecord->__construct()
+#3 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#6 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#7 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#8 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#10 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/index.php?r=site/login
+HTTP_REFERER=http://localhost:8080/index.php
+---
+2025/09/10 09:55:00 [error] [exception.CException] CException: UserController cannot find the requested view "index". in C:\yii-1.1.18\framework\web\CController.php:881
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(785): CController->renderPartial()
+#1 E:\yii-bookingsystem\protected\controllers\UserController.php(7): CController->render()
+#2 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): UserController->actionIndex()
+#3 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#5 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#6 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#7 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php?r=user/index
+HTTP_REFERER=http://localhost:8080/index.php
+---
