@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta name="language" content="en">
-
+	<meta name="csrf-token" content="<?php echo Yii::app()->request->csrfToken; ?>">
 	<!-- blueprint CSS framework -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
@@ -14,11 +14,31 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
+	
+	<!-- Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
+<!-- Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<!-- Add Tailwind CSS -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+
+	<style>
+		#appointment-section {
+    transition: all 0.3s ease-in-out;
+}
+	</style>
 </head>
 
 <body>
+	<?php
+Yii::app()->clientScript->registerCoreScript('jquery');
+?>
 
 <div class="container" id="page">
 
@@ -26,17 +46,17 @@
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 
-	<div id="mainmenu">
+	<div id="mainmenu" class="text-center">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Users', 'url'=>array('/user/index'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Services', 'url'=>array('/services/index'), 'visible'=>!Yii::app()->user->isGuest),
-				array('label'=>'Appointments', 'url'=>array('/appointment/index'), 'visible'=>!Yii::app()->user->isGuest)
-
+				array('label'=>'Register', 'url'=>array('/site/register'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Profile', 'url'=>array('/user/profile'), 'visible'=>!Yii::app()->user->isGuest),
+        		array('label' => 'Users', 'url' => array('/user/index'), 'visible' => Yii::app()->user->getState('role') === 'admin'),
+				array('label'=>'Services', 'url'=>array('/services/index'), 'visible'=>Yii::app()->user->getState('role') === 'admin'),
+				array('label'=>'Appointments', 'url'=>array('/appointment/index'), 'visible'=>!Yii::app()->user->isGuest),
+				array('label'=>'Logout', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
 	</div><!-- mainmenu -->

@@ -7,7 +7,6 @@
  * @property integer $id
  * @property integer $user_id
  * @property integer $service_id
- * @property string $appointment_datetime
  * @property string $notes
  * @property string $status
  * @property string $created_at
@@ -31,13 +30,13 @@ class Appointments extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id, service_id, appointment_datetime', 'required'),
+			array('user_id, service_id, appointment_date', 'required'),
 			array('user_id, service_id', 'numerical', 'integerOnly'=>true),
 			array('status', 'length', 'max'=>9),
 			array('notes, created_at, updated_at', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, service_id, appointment_datetime, notes, status, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, user_id, service_id, appointment_date,appointment_time, notes, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,6 +48,8 @@ class Appointments extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'user' => array(self::BELONGS_TO, 'Users', 'user_id'), // The user who booked it
+        	'service' => array(self::BELONGS_TO, 'Services', 'service_id'), // The service booked
 		);
 	}
 
@@ -61,7 +62,6 @@ class Appointments extends CActiveRecord
 			'id' => 'ID',
 			'user_id' => 'User',
 			'service_id' => 'Service',
-			'appointment_datetime' => 'Appointment Datetime',
 			'notes' => 'Notes',
 			'status' => 'Status',
 			'created_at' => 'Created At',
@@ -90,7 +90,6 @@ class Appointments extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
 		$criteria->compare('service_id',$this->service_id);
-		$criteria->compare('appointment_datetime',$this->appointment_datetime,true);
 		$criteria->compare('notes',$this->notes,true);
 		$criteria->compare('status',$this->status,true);
 		$criteria->compare('created_at',$this->created_at,true);

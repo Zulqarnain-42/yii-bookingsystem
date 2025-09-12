@@ -15,6 +15,8 @@
  */
 class Users extends CActiveRecord
 {
+    public $password;
+    public $repeat_password;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -31,16 +33,14 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, email, password_hash', 'required'),
-			array('username', 'length', 'max'=>50),
-			array('email, full_name', 'length', 'max'=>100),
-			array('password_hash', 'length', 'max'=>255),
-			array('role', 'length', 'max'=>5),
-			array('created_at, updated_at', 'safe'),
-			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.
-			array('id, username, email, password_hash, full_name, created_at, updated_at, role', 'safe', 'on'=>'search'),
-		);
+            array('username, email, password', 'required'),
+            array('repeat_password', 'compare', 'compareAttribute'=>'password', 'message'=>'Passwords do not match.'),
+            array('email', 'email'),
+            array('username', 'length', 'max'=>50),
+            array('email, full_name', 'length', 'max'=>100),
+            array('password', 'length', 'min'=>6, 'max'=>255),
+            array('password_hash, created_at, updated_at, role', 'safe'),
+        );
 	}
 
 	/**
@@ -51,6 +51,8 @@ class Users extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'services' => array(self::HAS_MANY, 'Services', 'user_id'), // A user offers many services
+        	'appointments' => array(self::HAS_MANY, 'Appointments', 'user_id'),
 		);
 	}
 

@@ -10,6 +10,8 @@
  */
 class Services extends CActiveRecord
 {
+	public $start_time;
+	public $end_time;
 	/**
 	 * @return string the associated database table name
 	 */
@@ -29,9 +31,14 @@ class Services extends CActiveRecord
 			array('name', 'required'),
 			array('name', 'length', 'max'=>50),
 			array('description', 'safe'),
+			array('image', 'file', 'types'=>'jpg, jpeg, png, gif', 'allowEmpty'=>true),
+			array('start_time, end_time', 'match', 
+            	'pattern'=>'/^([01]\d|2[0-3]):([0-5]\d)$/', 
+            	'message'=>'{attribute} must be in HH:MM format.'
+        	),			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description', 'safe', 'on'=>'search'),
+			array('id, name, description, start_time, end_time, image', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -43,6 +50,8 @@ class Services extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'provider' => array(self::BELONGS_TO, 'Users', 'user_id'), // The provider of the service
+        	'appointments' => array(self::HAS_MANY, 'Appointments', 'service_id'), // Service has many appointments
 		);
 	}
 

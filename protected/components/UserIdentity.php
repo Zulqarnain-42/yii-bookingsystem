@@ -7,6 +7,8 @@
  */
 class UserIdentity extends CUserIdentity
 {
+	private $_id;
+
 	/**
 	 * Authenticates a user.
 	 * The example implementation makes sure if the username and password
@@ -17,6 +19,7 @@ class UserIdentity extends CUserIdentity
 	 */
 	public function authenticate()
 	{
+		/*
 		$users=array(
 			// username => password
 			'demo'=>'demo',
@@ -29,5 +32,26 @@ class UserIdentity extends CUserIdentity
 		else
 			$this->errorCode=self::ERROR_NONE;
 		return !$this->errorCode;
+		*/
+
+		$user = Users::model()->findByAttributes(array('username' => $this->username));
+
+        if ($user === null) {
+            $this->errorCode = self::ERROR_USERNAME_INVALID;
+        } elseif (!password_verify($this->password, $user->password_hash)) {
+            $this->errorCode = self::ERROR_PASSWORD_INVALID;
+        } else {
+            $this->_id = $user->id;
+            $this->username = $user->username;
+			Yii::app()->user->setState('role', $user->role);
+            $this->errorCode = self::ERROR_NONE;
+        }
+
+        return !$this->errorCode;
 	}
+
+	public function getId()
+    {
+        return $this->_id;
+    }
 }

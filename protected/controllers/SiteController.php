@@ -27,9 +27,23 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$criteria = new CDbCriteria();
+
+		// Total count for pagination
+		$count = Services::model()->count($criteria);
+
+		// Setup pagination, 10 records per page
+		$pages = new CPagination($count);
+		$pages->pageSize = 9;
+		$pages->applyLimit($criteria);
+
+		// Fetch services with limit & offset applied
+		$services = Services::model()->findAll($criteria);
+
+		$this->render('index', [
+			'services' => $services,
+			'pages' => $pages,
+		]);
 	}
 
 	/**
@@ -77,6 +91,10 @@ class SiteController extends Controller
 	 */
 	public function actionLogin()
 	{
+		if (!Yii::app()->user->isGuest) {
+			$this->redirect(['site/index']);
+		}
+
 		$model=new LoginForm;
 
 		// if it is ajax validation request
@@ -97,6 +115,42 @@ class SiteController extends Controller
 		// display the login form
 		$this->render('login',array('model'=>$model));
 	}
+
+	public function actionRegister()
+	{
+		if (!Yii::app()->user->isGuest && !Yii::app()->user->is_admin) {
+			$this->redirect(array('site/index'));
+		}
+
+		$model = new Users;
+
+		if (isset($_POST['Users'])) {
+			$model->attributes = $_POST['Users'];
+
+			// Hash the raw password
+			$model->password_hash = password_hash($_POST['Users']['password'], PASSWORD_BCRYPT);
+
+			if ($model->save()) {
+				Yii::app()->user->setFlash('success', 'Registration successful!');
+				$this->refresh();
+			} else {
+				// Show validation errors
+				print_r($model->getErrors());
+				Yii::app()->end();
+			}
+		}
+
+		$this->render('register', array('model' => $model));
+	}
+
+	public function actionIsLoggedIn()
+	{
+		echo CJSON::encode([
+			'loggedIn' => !Yii::app()->user->isGuest
+		]);
+		Yii::app()->end();
+	}
+
 
 	/**
 	 * Logs out the current user and redirect to homepage.
