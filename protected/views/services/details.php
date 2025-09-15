@@ -1,12 +1,18 @@
 <div class="max-w-6xl mx-auto p-6">
+    <?php echo CHtml::hiddenField('Services[id]', CHtml::encode($model->id)); ?>
     <!-- Profile Section -->
     <div class="bg-gray-50 shadow-lg rounded-2xl overflow-hidden flex flex-col md:flex-row">
         <!-- Left: Image -->
         <div class="relative w-full md:w-1/3 h-64 md:h-auto">
-            <img src="<?php echo Yii::app()->baseUrl . '/uploads/' . $model->image; ?>" 
-                 alt="<?php echo CHtml::encode($model->name); ?>" 
-                 class="w-full h-full object-cover">
+    <div class="relative w-full md:w-1/3 h-64 md:h-auto">
+    <img src="<?php echo Yii::app()->request->baseUrl . '/uploads/images/unnamed.png'; ?>" 
+         alt="Logo" 
+         class="w-full h-full object-cover">
+</div>
+
+
         </div>
+
 
         <!-- Right: Info -->
         <div class="p-6 flex-1">
@@ -26,22 +32,24 @@
 
             <!-- Appointment Form -->
             <div id="appointment-section" class="mt-6 hidden bg-white p-4 border rounded-lg shadow-sm">
-                <?php echo CHtml::hiddenField('Services[id]', CHtml::encode($model->id)); ?>
                 <label class="block mb-2 font-semibold text-gray-700">Select Date</label>
-                <input type="date" id="appointment-datetime" class="w-full border p-2 rounded mb-4">
+                <input type="date" id="appointment-datetime" class="w-full border p-2 rounded mb-4"  onchange="handleDateChange()">
 
                 <div id="available-slots" class="space-y-2 mb-4">
                     <!-- JS will populate this -->
                 </div>
+
+                <label class="block mb-2 font-semibold text-gray-700">Notes</label>
+                <textarea id="appointment-notes" class="w-full border p-2 rounded mb-4" rows="3"></textarea>
 
                 <button class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Confirm Appointment</button>
             </div>
 
             <!-- Contact Info -->
             <div class="mt-6 space-y-2 text-gray-700">
-                <p><span class="font-semibold">Phone:</span></p>
-                <p><span class="font-semibold">Email:</span></p>
-                <p><span class="font-semibold">Address:</span></p>
+                <p><span class="font-semibold">Phone:</span> <?php echo CHtml::encode($provider->phone); ?></p>
+                <p><span class="font-semibold">Email:</span> <?php echo CHtml::encode($provider->email); ?></p>
+                <p><span class="font-semibold">Full Name:</span> <?php echo CHtml::encode($provider->full_name); ?></p>
             </div>
         </div>
     </div>
@@ -55,12 +63,19 @@
     </div>
 </div>
 
-
-
-
+<div id="toast" class="hidden fixed bottom-6 right-6 px-4 py-3 rounded shadow-lg text-white z-50 opacity-0 transition-opacity duration-300"></div>
 
 <script>
 let selectedSlot = null;
+
+    function handleDateChange() {
+        const selectedDate = document.getElementById('appointment-datetime').value;
+        const serviceId = <?php echo CHtml::encode($model->id); ?>;
+
+        if (selectedDate) {
+            showAvailableSlots(serviceId, selectedDate);
+        }
+    }
 
 function checkLoginAndShowForm() {
     fetch('<?php echo Yii::app()->createUrl("site/isLoggedIn"); ?>')
@@ -79,23 +94,44 @@ function checkLoginAndShowForm() {
 
 function showAppointmentForm() {
     const section = document.getElementById('appointment-section');
-    section.classList.remove('hidden');
-    showAvailableSlots();
+    section.classList.remove('hidden');   
 }
 
-function showAvailableSlots() {
-    const slots = ['10:00 AM', '11:00 AM', '1:30 PM', '3:00 PM'];
-    const container = document.getElementById('available-slots');
-    container.innerHTML = '<label class="font-semibold text-gray-700 block mb-2">Available Slots:</label>';
+function showAvailableSlots(serviceId, selectedDate) {
+    // use explicit Yii route param 'r=' in URL
+    const url = `/index.php?r=services/getSlots&id=${serviceId}&date=${encodeURIComponent(selectedDate)}`;
 
-    slots.forEach(slot => {
-        const btn = document.createElement('button');
-        btn.textContent = slot;
-        btn.className = 'slot-btn bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded mr-2 mt-2';
-        btn.onclick = () => selectSlot(slot, btn);
-        container.appendChild(btn);
-    });
+    fetch(url)
+        .then(response => response.json())
+        .then(slots => {
+            const container = document.getElementById('available-slots');
+            container.innerHTML = '<label class="font-semibold text-gray-700 block mb-2">Available Slots:</label>';
+
+            slots.forEach(slot => {
+                const btn = document.createElement('button');
+                btn.textContent = slot.time;
+                btn.className = 'slot-btn px-3 py-2 rounded mr-2 mt-2';
+
+                if (slot.booked) {
+                    btn.classList.add('bg-red-300', 'cursor-not-allowed');
+                    btn.disabled = true;
+                    btn.title = 'This slot is already booked';
+                } else {
+                    btn.classList.add('bg-gray-200', 'hover:bg-gray-300');
+                    btn.onclick = () => selectSlot(slot.time, btn);
+                }
+
+                container.appendChild(btn);
+            });
+        })
+        .catch(err => {
+            console.error("Error fetching slots:", err);
+        });
 }
+
+
+
+
 
 function selectSlot(slot, btn) {
     selectedSlot = slot;
@@ -110,10 +146,7 @@ function selectSlot(slot, btn) {
 // Handle booking
 document.querySelector('#appointment-section button.bg-green-600').addEventListener('click', function () {
     const date = document.getElementById('appointment-datetime').value;
-    console.log('Selected Date:', date);
-    console.log('Selected Slot:', selectedSlot);
     const serviceId = document.querySelector('input[name="Services[id]"]').value;
-    console.log('Service ID:', serviceId);
     if (!date || !selectedSlot) {
         showToast('Please select both date and time slot.', 'error');
         return;
@@ -128,7 +161,8 @@ document.querySelector('#appointment-section button.bg-green-600').addEventListe
         body: JSON.stringify({
             service_id: serviceId,
             date: date,
-            time: selectedSlot
+            time: selectedSlot,
+            notes: document.getElementById('appointment-notes').value
         })
     })
     .then(res => res.json())

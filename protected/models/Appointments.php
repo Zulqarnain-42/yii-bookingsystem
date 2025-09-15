@@ -7,6 +7,8 @@
  * @property integer $id
  * @property integer $user_id
  * @property integer $service_id
+ * @property string $appointment_date
+ * @property string $appointment_time
  * @property string $notes
  * @property string $status
  * @property string $created_at
@@ -34,9 +36,10 @@ class Appointments extends CActiveRecord
 			array('user_id, service_id', 'numerical', 'integerOnly'=>true),
 			array('status', 'length', 'max'=>9),
 			array('notes, created_at, updated_at', 'safe'),
+			array('notes', 'length', 'max' => 500), 
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, service_id, appointment_date,appointment_time, notes, status, created_at, updated_at', 'safe', 'on'=>'search'),
+			array('id, user_id, service_id, appointment_date,appointment_time,appointment_status, notes, status, created_at, updated_at', 'safe', 'on'=>'search'),
 		);
 	}
 

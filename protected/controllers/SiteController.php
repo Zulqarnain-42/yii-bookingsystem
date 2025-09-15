@@ -151,6 +151,58 @@ class SiteController extends Controller
 		Yii::app()->end();
 	}
 
+public function actionAppointmentStats() {
+    $userId = Yii::app()->user->id;
+    $isAdmin = Yii::app()->user->role === 'admin';
+
+    // Date ranges
+    $today      = date('Y-m-d');
+    $monday     = date('Y-m-d', strtotime('monday this week'));
+    $sunday     = date('Y-m-d', strtotime('sunday this week'));
+    $firstDay   = date('Y-m-01');
+    $lastDay    = date('Y-m-t');
+
+    // Get count of pending appointments
+    $countToday = $this->getCount($today, $today, $userId, $isAdmin);
+    $countWeek  = $this->getCount($monday, $sunday, $userId, $isAdmin);
+    $countMonth = $this->getCount($firstDay, $lastDay, $userId, $isAdmin);
+
+    // Output as JSON
+    header('Content-Type: application/json');
+    echo CJSON::encode([
+        'today' => (int)$countToday,
+        'week'  => (int)$countWeek,
+        'month' => (int)$countMonth,
+    ]);
+    Yii::app()->end();
+}
+
+
+function getCount($startDate, $endDate, $userId = null, $isAdmin = false) {
+    // Create a new criteria for the query
+    $criteria = new CDbCriteria();
+    
+    // Filter appointments by date range
+    $criteria->addBetweenCondition('appointment_date', $startDate, $endDate);
+    
+    // Only count appointments that are "Pending"
+    $criteria->compare('appointment_status', 'Pending');
+    
+    // If not admin, restrict to the logged-in user's appointments
+    if (!$isAdmin) {
+        $criteria->compare('user_id', $userId);
+    }
+    
+    // Count the number of records matching the criteria
+    return Appointments::model()->count($criteria);
+}
+
+
+	public function actionDashboard()
+	{
+		$this->render('dashboard');
+	}
+
 
 	/**
 	 * Logs out the current user and redirect to homepage.

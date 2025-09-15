@@ -8,7 +8,18 @@ class AppointmentController extends Controller
 
         // Eager load relations
         $criteria->with = ['user', 'service'];
-        $criteria->together = true; // required for joined table search
+        $criteria->together = true;
+
+        // Get current user role and ID
+        $user = Yii::app()->user;
+        $isAdmin = Yii::app()->user->getState('role') === 'admin'; // assuming 'admin' is the role name
+        $currentUserId = $user->id;
+
+        // If not admin, filter appointments by current user
+        if (!$isAdmin) {
+            $criteria->addCondition('t.user_id = :userId');
+            $criteria->params[':userId'] = $currentUserId;
+        }
 
         // Search filter
         $search = Yii::app()->request->getParam('search');
@@ -31,12 +42,14 @@ class AppointmentController extends Controller
 
         // Render
         if (Yii::app()->request->isAjaxRequest) {
-            $this->renderPartial('_appointments_table', compact('appointments', 'pages', 'search'), false, true);
+            $this->renderPartial('_table', compact('appointments', 'pages', 'search'), false, true);
             Yii::app()->end();
         }
 
         $this->render('index', compact('appointments', 'pages', 'search'));
     }
+
+
 
     public function actionBook()
     {
@@ -58,7 +71,6 @@ class AppointmentController extends Controller
 
             // Check if appointment already exists
             $existing = Appointments::model()->findByAttributes([
-                'user_id' => $userId,
                 'service_id' => $serviceId,
                 'appointment_date' => $date,
                 'appointment_time' => $time
@@ -96,5 +108,110 @@ class AppointmentController extends Controller
             throw new CHttpException(400, 'Invalid request.');
         }
     }
+
+
+    public function actionUpdate()
+    {
+        if (Yii::app()->request->isAjaxRequest && Yii::app()->request->isPostRequest) {
+            $id = Yii::app()->request->getPost('id');
+            $model = Appointments::model()->findByPk($id);
+            if ($model === null) {
+                echo json_encode(['success' => false, 'message' => 'Appointment not found']);
+                Yii::app()->end();
+            }
+
+            $model->appointment_date = Yii::app()->request->getPost('appointment_date');
+            $model->appointment_time = Yii::app()->request->getPost('appointment_time');
+            $model->appointment_status = Yii::app()->request->getPost('status');
+
+            if ($model->save()) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Failed to save changes']);
+            }
+            Yii::app()->end();
+        }
+    }
+
+    public function actionCancel()
+    {
+        if (Yii::app()->request->isAjaxRequest && Yii::app()->request->isPostRequest) {
+            $json = file_get_contents("php://input");
+            $data = json_decode($json, true);
+
+            $id = $data['id'] ?? null;
+            $appointment = Appointments::model()->findByPk($id);
+
+            if ($appointment === null) {
+                echo json_encode(['success' => false, 'message' => 'Appointment not found.']);
+                Yii::app()->end();
+            }
+
+            // Update status only, keep record
+            $appointment->appointment_status = 'cancelled';
+
+            if ($appointment->save()) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Failed to update appointment status.']);
+            }
+            Yii::app()->end();
+        }
+    }
+
+    public function actionComplete()
+    {
+        if (Yii::app()->request->isAjaxRequest && Yii::app()->request->isPostRequest) {
+            $json = file_get_contents("php://input");
+            $data = json_decode($json, true);
+
+            $id = $data['id'] ?? null;
+
+            $appointment = Appointments::model()->findByPk($id);
+
+            if ($appointment === null) {
+                echo json_encode(['success' => false, 'message' => 'Appointment not found.']);
+                Yii::app()->end();
+            }
+
+            // Update status only, keep record
+            $appointment->appointment_status = 'completed';
+
+            if ($appointment->save()) {
+                echo json_encode(['success' => true]);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Failed to update appointment status.']);
+            }
+            Yii::app()->end();
+        }
+    }
+
+    public function actionGetAppointments()
+    {
+        // Assuming the user is authenticated
+        $userId = Yii::app()->user->id;
+
+        // Fetch all appointments for the logged-in user
+        $appointments = Appointments::model()->findAllByAttributes([
+            'user_id' => $userId
+        ]);
+
+        $events = [];
+        foreach ($appointments as $appointment) {
+            // Convert appointment data to FullCalendar format
+            $events[] = [
+                'title' => $appointment->service->name,
+                'start' => $appointment->appointment_date . 'T' . $appointment->appointment_time, // FullCalendar expects this format
+                'end' => $appointment->appointment_date . 'T' . $appointment->appointment_time, // Optional: adjust if there's a duration
+                'description' => $appointment->notes,
+                'status' => ucfirst($appointment->status), // You can include any status or field as needed
+            ];
+        }
+
+        // Send the response as JSON
+        echo CJSON::encode($events);
+        Yii::app()->end();
+    }
+
 
 }

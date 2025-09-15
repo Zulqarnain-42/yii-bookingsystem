@@ -71,5 +71,122 @@ class UserController extends Controller
         Yii::app()->end();
     }
 
+public function actionBlock()
+{
+    if (Yii::app()->request->isPostRequest) {
+        $userId = Yii::app()->request->getPost('id');
+        $action = Yii::app()->request->getPost('action'); // either 'block' or 'unblock'
+
+        $user = Users::model()->findByPk($userId);
+        if ($user) {
+            // Update the user's is_active status based on the action
+            if ($action == 'block') {
+                $user->is_active = 0; // Block the user
+            } elseif ($action == 'unblock') {
+                $user->is_active = 1; // Unblock the user
+            }
+
+            // Save the user status and return a success response
+            if ($user->save(false)) {
+                echo CJSON::encode([
+                    'success' => true,
+                    'new_status' => $user->is_active // Return the new status (0 or 1)
+                ]);
+            } else {
+                echo CJSON::encode(['success' => false, 'error' => 'Failed to update user status']);
+            }
+        } else {
+            echo CJSON::encode(['success' => false, 'error' => 'User not found']);
+        }
+
+        Yii::app()->end();
+    }
+}
+
+public function actionMakeStaff()
+{
+    if (Yii::app()->request->isPostRequest) {
+        $userId = Yii::app()->request->getPost('id');
+        $action = Yii::app()->request->getPost('action'); // either 'make_staff' or 'make_user'
+
+        $user = Users::model()->findByPk($userId);
+        if ($user) {
+            // Update the user's role based on the action
+            if ($action == 'make_staff') {
+                $user->role = 'staff'; // Assign 'staff' role
+            } elseif ($action == 'make_user') {
+                $user->role = 'user'; // Assign 'user' role
+            }
+
+            // Save the user status and return a success response
+            if ($user->save(false)) {
+                echo CJSON::encode([
+                    'success' => true,
+                    'new_role' => $user->role // Return the new role
+                ]);
+            } else {
+                echo CJSON::encode(['success' => false, 'error' => 'Failed to update user role']);
+            }
+        } else {
+            echo CJSON::encode(['success' => false, 'error' => 'User not found']);
+        }
+
+        Yii::app()->end();
+    }
+}
+
+
+
+    public function actionUpdateRole()
+    {
+        if (Yii::app()->request->isPostRequest) {
+            $userId = Yii::app()->request->getPost('id');
+            $newRole = Yii::app()->request->getPost('role'); // 'staff' or 'user'
+
+            $user = Users::model()->findByPk($userId);
+            if ($user) {
+                // Update the role of the user
+                $user->role = $newRole; // Change user role to staff or user
+                
+                // Save the user and respond
+                if ($user->save(false)) {
+                    echo CJSON::encode([
+                        'success' => true,
+                        'new_role' => $user->role // Return the new role
+                    ]);
+                } else {
+                    echo CJSON::encode(['success' => false, 'error' => 'Failed to save status']);
+                }
+            } else {
+                echo CJSON::encode(['success' => false, 'error' => 'User not found']);
+            }
+
+            Yii::app()->end();
+        }
+    }
+
+
+
+    public function actionGetUsers()
+    {
+        header('Content-Type: application/json');
+
+        $users = Users::model()->findAll(array(
+            'select' => 'id, username',
+            'order' => 'username ASC',
+        ));
+
+        $result = array();
+        foreach ($users as $user) {
+            $result[] = array(
+                'id' => $user->id,
+                'username' => $user->username,
+            );
+        }
+
+        echo CJSON::encode($result);
+        Yii::app()->end();
+    }
+
 
 }

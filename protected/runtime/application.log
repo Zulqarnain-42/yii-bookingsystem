@@ -1169,3 +1169,910 @@ Stack trace:
 REQUEST_URI=/index.php?r=appointment/index
 in E:\yii-bookingsystem\protected\controllers\AppointmentController.php (23)
 in E:\yii-bookingsystem\index.php (13)
+2025/09/12 07:39:07 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "service/getServices". in C:\yii-1.1.18\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#1 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=service/getServices
+---
+2025/09/12 07:39:27 [error] [php] include(Service.php): failed to open stream: No such file or directory (C:\yii-1.1.18\framework\YiiBase.php:432)
+Stack trace:
+#0 E:\yii-bookingsystem\protected\controllers\ServicesController.php(38): spl_autoload_call()
+#1 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): ServicesController->actionGetServices()
+#2 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\yii-1.1.18\framework\web\CController.php(286): ServicesController->runAction()
+#4 C:\yii-1.1.18\framework\web\CController.php(265): ServicesController->runActionWithFilters()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(282): ServicesController->run()
+#6 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#8 E:\yii-bookingsystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=services/getServices
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (38)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/12 07:40:31 [error] [php] include(Service.php): failed to open stream: No such file or directory (C:\yii-1.1.18\framework\YiiBase.php:432)
+Stack trace:
+#0 E:\yii-bookingsystem\protected\controllers\ServicesController.php(38): spl_autoload_call()
+#1 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): ServicesController->actionGetServices()
+#2 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\yii-1.1.18\framework\web\CController.php(286): ServicesController->runAction()
+#4 C:\yii-1.1.18\framework\web\CController.php(265): ServicesController->runActionWithFilters()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(282): ServicesController->run()
+#6 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#8 E:\yii-bookingsystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=services/getServices
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (38)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/12 09:48:17 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "users/getUsers". in C:\yii-1.1.18\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#1 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=users/getUsers
+HTTP_REFERER=http://localhost:8080/index.php?r=appointment/index
+---
+2025/09/12 09:48:33 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\yii-1.1.18\framework\YiiBase.php:432)
+Stack trace:
+#0 E:\yii-bookingsystem\protected\controllers\UserController.php(78): spl_autoload_call()
+#1 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): UserController->actionGetUsers()
+#2 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\yii-1.1.18\framework\web\CController.php(286): UserController->runAction()
+#4 C:\yii-1.1.18\framework\web\CController.php(265): UserController->runActionWithFilters()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(282): UserController->run()
+#6 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#8 E:\yii-bookingsystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=user/getUsers
+in E:\yii-bookingsystem\protected\controllers\UserController.php (78)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/12 09:48:59 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list'. The SQL statement executed was: SELECT id, name FROM `users` `t` ORDER BY name ASC.
+in E:\yii-bookingsystem\protected\controllers\UserController.php (79)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/12 09:48:59 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'name' in 'field list'. The SQL statement executed was: SELECT id, name FROM `users` `t` ORDER BY name ASC in C:\yii-1.1.18\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\yii-1.1.18\framework\db\CDbCommand.php(396): CDbCommand->queryInternal()
+#1 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(1359): CDbCommand->queryAll()
+#2 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(1478): CActiveRecord->query()
+#3 E:\yii-bookingsystem\protected\controllers\UserController.php(79): CActiveRecord->findAll()
+#4 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): UserController->actionGetUsers()
+#5 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#7 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#8 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#9 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/index.php?r=user/getUsers
+HTTP_REFERER=http://localhost:8080/index.php?r=appointment/index
+---
+2025/09/12 10:59:40 [error] [exception.CHttpException.404] CHttpException: Service not found. in E:\yii-bookingsystem\protected\controllers\ServicesController.php:78
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): ServicesController->actionUpdate()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=services/update
+HTTP_REFERER=http://localhost:8080/index.php?r=services/index
+---
+2025/09/12 11:03:11 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (82)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/12 11:03:30 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "view". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=services/view&id=7
+HTTP_REFERER=http://localhost:8080/index.php?r=site/index
+---
+2025/09/12 11:19:12 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "adminCalendar". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=appointment/adminCalendar
+HTTP_REFERER=http://localhost:8080/index.php
+---
+2025/09/12 11:19:50 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "adminCalendar". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=appointment/adminCalendar
+---
+2025/09/12 11:19:56 [error] [exception.CHttpException.403] CHttpException: Unauthorized in E:\yii-bookingsystem\protected\controllers\AppointmentController.php:56
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): AppointmentController->actionGetAppointments()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=appointment/GetAppointments
+HTTP_REFERER=http://localhost:8080/index.php
+---
+2025/09/12 11:30:28 [error] [exception.CException] CException: AppointmentController cannot find the requested view "adminCalendar". in C:\yii-1.1.18\framework\web\CController.php:881
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(785): CController->renderPartial()
+#1 E:\yii-bookingsystem\protected\controllers\AppointmentController.php(74): CController->render()
+#2 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): AppointmentController->actionAdminCalendar()
+#3 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#4 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#5 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#6 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#7 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#8 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#9 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#10 {main}
+REQUEST_URI=/index.php?r=appointment/adminCalendar
+---
+2025/09/12 11:47:59 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'status' at row 1. The SQL statement executed was: UPDATE `appointments` SET `id`=:yp0, `user_id`=:yp1, `service_id`=:yp2, `notes`=:yp3, `status`=:yp4, `created_at`=:yp5, `updated_at`=:yp6, `appointment_date`=:yp7, `appointment_time`=:yp8 WHERE `appointments`.`id`=1.
+in E:\yii-bookingsystem\protected\controllers\AppointmentController.php (128)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/12 11:47:59 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'status' at row 1. The SQL statement executed was: UPDATE `appointments` SET `id`=:yp0, `user_id`=:yp1, `service_id`=:yp2, `notes`=:yp3, `status`=:yp4, `created_at`=:yp5, `updated_at`=:yp6, `appointment_date`=:yp7, `appointment_time`=:yp8 WHERE `appointments`.`id`=1 in C:\yii-1.1.18\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(1756): CDbCommand->execute()
+#1 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(1130): CActiveRecord->updateByPk()
+#2 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(811): CActiveRecord->update()
+#3 E:\yii-bookingsystem\protected\controllers\AppointmentController.php(128): CActiveRecord->save()
+#4 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): AppointmentController->actionUpdate()
+#5 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#7 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#8 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#9 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/index.php?r=appointment/update
+HTTP_REFERER=http://localhost:8080/index.php?r=appointment/index
+---
+2025/09/12 11:48:09 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'status' at row 1. The SQL statement executed was: UPDATE `appointments` SET `id`=:yp0, `user_id`=:yp1, `service_id`=:yp2, `notes`=:yp3, `status`=:yp4, `created_at`=:yp5, `updated_at`=:yp6, `appointment_date`=:yp7, `appointment_time`=:yp8 WHERE `appointments`.`id`=1.
+in E:\yii-bookingsystem\protected\controllers\AppointmentController.php (128)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/12 11:48:09 [error] [exception.CDbException] CDbException: CDbCommand failed to execute the SQL statement: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'status' at row 1. The SQL statement executed was: UPDATE `appointments` SET `id`=:yp0, `user_id`=:yp1, `service_id`=:yp2, `notes`=:yp3, `status`=:yp4, `created_at`=:yp5, `updated_at`=:yp6, `appointment_date`=:yp7, `appointment_time`=:yp8 WHERE `appointments`.`id`=1 in C:\yii-1.1.18\framework\db\CDbCommand.php:358
+Stack trace:
+#0 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(1756): CDbCommand->execute()
+#1 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(1130): CActiveRecord->updateByPk()
+#2 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(811): CActiveRecord->update()
+#3 E:\yii-bookingsystem\protected\controllers\AppointmentController.php(128): CActiveRecord->save()
+#4 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): AppointmentController->actionUpdate()
+#5 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#6 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#7 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#8 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#9 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#10 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#11 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/index.php?r=appointment/update
+HTTP_REFERER=http://localhost:8080/index.php?r=appointment/index
+---
+2025/09/12 12:32:29 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "dashboard/appointmentStats". in C:\yii-1.1.18\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#1 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=dashboard/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/12 12:32:46 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "dashboard/appointmentStats". in C:\yii-1.1.18\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#1 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=dashboard/appointmentStats
+---
+2025/09/12 12:33:03 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "dashboard/appointmentStats". in C:\yii-1.1.18\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#1 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=dashboard/appointmentStats
+---
+2025/09/12 12:56:34 [error] [exception.CException] CException: AppointmentController cannot find the requested view "_appointments_table". in C:\yii-1.1.18\framework\web\CController.php:881
+Stack trace:
+#0 E:\yii-bookingsystem\protected\controllers\AppointmentController.php(45): CController->renderPartial()
+#1 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): AppointmentController->actionIndex()
+#2 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#4 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#6 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#8 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=appointment/index&search=zulqar
+HTTP_REFERER=http://localhost:8080/index.php?r=appointment/index
+---
+2025/09/12 12:56:53 [error] [exception.CException] CException: AppointmentController cannot find the requested view "_appointments_table". in C:\yii-1.1.18\framework\web\CController.php:881
+Stack trace:
+#0 E:\yii-bookingsystem\protected\controllers\AppointmentController.php(45): CController->renderPartial()
+#1 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): AppointmentController->actionIndex()
+#2 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#3 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#4 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#6 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#7 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#8 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/index.php?r=appointment/index&search=zulqar
+HTTP_REFERER=http://localhost:8080/index.php?r=appointment/index
+---
+2025/09/15 05:43:01 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (82)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:39:30 [warning] [application] Failed to set unsafe attribute "duration" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (37)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:43:36 [warning] [application] Failed to set unsafe attribute "duration" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (37)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:45:57 [warning] [application] Failed to set unsafe attribute "duration" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (37)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:48:21 [warning] [application] Failed to set unsafe attribute "duration" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (37)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:48:21 [error] [exception.CException] CException: Property "Services.image" is not defined. in C:\yii-1.1.18\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(145): CComponent->__get()
+#1 C:\yii-1.1.18\framework\validators\CFileValidator.php(144): CActiveRecord->__get()
+#2 C:\yii-1.1.18\framework\validators\CValidator.php(201): CFileValidator->validateAttribute()
+#3 C:\yii-1.1.18\framework\base\CModel.php(159): CValidator->validate()
+#4 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(810): CModel->validate()
+#5 E:\yii-bookingsystem\protected\controllers\ServicesController.php(40): CActiveRecord->save()
+#6 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): ServicesController->actionCreate()
+#7 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#8 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#9 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#10 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#11 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#12 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#13 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#14 {main}
+REQUEST_URI=/index.php?r=services/create
+HTTP_REFERER=http://localhost:8080/index.php?r=services/index
+---
+2025/09/15 06:49:40 [warning] [application] Failed to set unsafe attribute "duration" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (37)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:54:00 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:54:00 [warning] [application] Failed to set unsafe attribute "duration" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:56:31 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:56:31 [warning] [application] Failed to set unsafe attribute "duration" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:59:08 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 06:59:08 [warning] [application] Failed to set unsafe attribute "duration" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:00:23 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:00:23 [warning] [application] Failed to set unsafe attribute "duration" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:01:49 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:02:23 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:02:46 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:03:12 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:03:30 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:04:02 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:04:42 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:05:00 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:05:12 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:05:27 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:05:35 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:05:42 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:05:55 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (84)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:07:55 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (85)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:08:17 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (85)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:08:31 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (85)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:08:52 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (85)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:09:05 [warning] [application] Failed to set unsafe attribute "id" of "Services".
+in E:\yii-bookingsystem\protected\controllers\ServicesController.php (85)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 07:57:30 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "getslots=7". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=services/getslots=7
+---
+2025/09/15 07:57:48 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "GetSlots=7". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=services/GetSlots=7
+---
+2025/09/15 07:58:17 [error] [exception.CHttpException.400] CHttpException: Your request is invalid. in C:\yii-1.1.18\framework\web\CController.php:337
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(309): CController->invalidActionParams()
+#1 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#2 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#3 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#5 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#6 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#7 {main}
+REQUEST_URI=/index.php?r=services/GetSlots
+---
+2025/09/15 07:58:24 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "GetSlots=77". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=services/GetSlots=77
+---
+2025/09/15 07:58:30 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "GetSlots=7". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=services/GetSlots=7
+---
+2025/09/15 07:59:00 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "GetSlots?7". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=services/GetSlots?7
+---
+2025/09/15 07:59:17 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "GetSlots?id=7". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=services/GetSlots?id=7
+---
+2025/09/15 08:00:49 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "getSlots?id=7". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=services/getSlots?id=7
+HTTP_REFERER=http://localhost:8080/index.php?r=services/view&id=7
+---
+2025/09/15 08:21:04 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "getSlots?id=16". in C:\yii-1.1.18\framework\web\CController.php:486
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CController.php(270): CController->missingAction()
+#1 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#2 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#3 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#4 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/index.php?r=services/getSlots?id=16&date=2025-09-30
+HTTP_REFERER=http://localhost:8080/index.php?r=services/view&id=16
+---
+2025/09/15 08:25:54 [error] [exception.CException] CException: Property "Services.phone" is not defined. in C:\yii-1.1.18\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(145): CComponent->__get()
+#1 E:\yii-bookingsystem\protected\views\services\details.php(46): CActiveRecord->__get()
+#2 C:\yii-1.1.18\framework\web\CBaseController.php(126): require('E:\\yii-bookings...')
+#3 C:\yii-1.1.18\framework\web\CBaseController.php(95): CBaseController->renderInternal()
+#4 C:\yii-1.1.18\framework\web\CController.php(872): CBaseController->renderFile()
+#5 C:\yii-1.1.18\framework\web\CController.php(785): CController->renderPartial()
+#6 E:\yii-bookingsystem\protected\controllers\ServicesController.php(186): CController->render()
+#7 [internal function]: ServicesController->actionview()
+#8 C:\yii-1.1.18\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#12 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#13 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#14 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=services/view&id=16
+---
+2025/09/15 08:26:10 [error] [exception.CException] CException: Property "Users.address" is not defined. in C:\yii-1.1.18\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\yii-1.1.18\framework\db\ar\CActiveRecord.php(145): CComponent->__get()
+#1 E:\yii-bookingsystem\protected\views\services\details.php(48): CActiveRecord->__get()
+#2 C:\yii-1.1.18\framework\web\CBaseController.php(126): require('E:\\yii-bookings...')
+#3 C:\yii-1.1.18\framework\web\CBaseController.php(95): CBaseController->renderInternal()
+#4 C:\yii-1.1.18\framework\web\CController.php(872): CBaseController->renderFile()
+#5 C:\yii-1.1.18\framework\web\CController.php(785): CController->renderPartial()
+#6 E:\yii-bookingsystem\protected\controllers\ServicesController.php(186): CController->render()
+#7 [internal function]: ServicesController->actionview()
+#8 C:\yii-1.1.18\framework\web\actions\CAction.php(109): ReflectionMethod->invokeArgs()
+#9 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal()
+#10 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#11 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#12 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#13 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#14 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#15 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#16 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#17 {main}
+REQUEST_URI=/index.php?r=services/view&id=16
+---
+2025/09/15 09:22:56 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 09:23:18 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 09:23:19 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 09:24:22 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 09:33:27 [error] [application] Failed to save user status: Array
+(
+    [password] => Array
+        (
+            [0] => Password cannot be blank.
+        )
+
+)
+
+in E:\yii-bookingsystem\protected\controllers\UserController.php (90)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 09:46:57 [error] [application] Failed to save user status: Array
+(
+    [password] => Array
+        (
+            [0] => Password cannot be blank.
+        )
+
+)
+
+in E:\yii-bookingsystem\protected\controllers\UserController.php (91)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 09:47:09 [error] [application] Failed to save user status: Array
+(
+    [password] => Array
+        (
+            [0] => Password cannot be blank.
+        )
+
+)
+
+in E:\yii-bookingsystem\protected\controllers\UserController.php (91)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 09:47:17 [error] [application] Failed to save user status: Array
+(
+    [password] => Array
+        (
+            [0] => Password cannot be blank.
+        )
+
+)
+
+in E:\yii-bookingsystem\protected\controllers\UserController.php (91)
+in E:\yii-bookingsystem\index.php (13)
+2025/09/15 10:01:42 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 10:02:54 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 10:53:58 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "appointments/complete". in C:\yii-1.1.18\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#1 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=appointments/complete
+HTTP_REFERER=http://localhost:8080/index.php?r=appointment/index
+---
+2025/09/15 10:54:07 [error] [exception.CHttpException.404] CHttpException: Unable to resolve the request "appointments/complete". in C:\yii-1.1.18\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#1 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#2 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/index.php?r=appointments/complete
+HTTP_REFERER=http://localhost:8080/index.php?r=appointment/index
+---
+2025/09/15 11:09:25 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 11:09:29 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 11:18:51 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 11:30:54 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 11:56:17 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 11:57:19 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 11:59:12 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 11:59:54 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:00:31 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:12:06 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:12:33 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:12:44 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:12:56 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:13:04 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:13:10 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:13:18 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:13:38 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---
+2025/09/15 12:13:43 [error] [exception.Error] Error: Call to undefined function getCount() in E:\yii-bookingsystem\protected\controllers\SiteController.php:169
+Stack trace:
+#0 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionAppointmentStats()
+#1 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 C:\yii-1.1.18\framework\web\CController.php(286): CController->runAction()
+#3 C:\yii-1.1.18\framework\web\CController.php(265): CController->runActionWithFilters()
+#4 C:\yii-1.1.18\framework\web\CWebApplication.php(282): CController->run()
+#5 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#7 E:\yii-bookingsystem\index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/index.php?r=site/appointmentStats
+HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
+---

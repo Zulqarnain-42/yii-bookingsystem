@@ -5,9 +5,8 @@ class ServicesController extends Controller
     public function actionIndex()
     {
         $criteria = new CDbCriteria();
-
-        // ✅ Handle search input
         $search = Yii::app()->request->getParam('search');
+
         if (!empty($search)) {
             $criteria->addSearchCondition('name', $search, true, 'OR');
             $criteria->addSearchCondition('description', $search, true, 'OR');
@@ -16,11 +15,9 @@ class ServicesController extends Controller
         $count = Services::model()->count($criteria);
         $pages = new CPagination($count);
         $pages->pageSize = 10;
-
-        // ✅ This is where pageVar belongs
         $pages->pageVar = 'page';
-
         $pages->applyLimit($criteria);
+
         $services = Services::model()->findAll($criteria);
 
         if (Yii::app()->request->isAjaxRequest) {
@@ -31,28 +28,16 @@ class ServicesController extends Controller
         $this->render('index', compact('services', 'pages', 'search'));
     }
 
-
-
     public function actionCreate()
     {
         $model = new Services;
 
         if (isset($_POST['Services'])) {
-            $model->attributes = $_POST['Services'];
-            $uploadedFile = CUploadedFile::getInstance($model, 'image');
 
-            if ($uploadedFile !== null) {
-                $filename = uniqid() . '.' . $uploadedFile->extensionName;
-                $model->image = $filename;
-            }
+            $model->attributes = $_POST['Services'];
+            $model->user_id = Yii::app()->user->id; 
 
             if ($model->save()) {
-                // Save image file after model is saved
-                if ($uploadedFile !== null) {
-                    $uploadPath = Yii::getPathOfAlias('webroot') . '/uploads/' . $filename;
-                    $uploadedFile->saveAs($uploadPath);
-                }
-
                 echo json_encode([
                     'success' => true,
                     'service' => [
@@ -75,62 +60,32 @@ class ServicesController extends Controller
         Yii::app()->end();
     }
 
-
-    public function actionview($id)
-    {
-        $model = Services::model()->findByPk($id);
-        if ($model === null) {
-            throw new CHttpException(404, 'The requested service does not exist.');
-        }
-
-        $this->render('details', ['model' => $model]);   
-    }
-
-
     public function actionGet($id)
     {
         $model = Services::model()->findByPk($id);
         if ($model) {
             echo CJSON::encode($model->attributes);
-            Yii::app()->end();
+        } else {
+            echo CJSON::encode(['error' => 'Not found']);
         }
-        echo CJSON::encode(['error' => 'Not found']);
         Yii::app()->end();
     }
 
     public function actionUpdate()
     {
-        $id = Yii::app()->request->getPost('id');
+        $id = Yii::app()->request->getPost('Services')['id'] ?? null;
         $model = Services::model()->findByPk($id);
 
         if (!$model) {
             throw new CHttpException(404, 'Service not found.');
         }
 
-        $oldImage = $model->image;
-
-
         if (isset($_POST['Services'])) {
+
             $model->attributes = $_POST['Services'];
-
-            $uploadedFile = CUploadedFile::getInstance($model, 'image');
-
-            if ($uploadedFile !== null) {
-                // Generate a unique filename for the uploaded image
-                $filename = uniqid() . '.' . $uploadedFile->extensionName;
-                $model->image = $filename;
-            } else {
-                // Keep the old image if no new file uploaded
-                $model->image = $oldImage;
-            }
+            $model->user_id = Yii::app()->user->id;
 
             if ($model->save()) {
-                // Save the uploaded file if available
-                if ($uploadedFile !== null) {
-                    $uploadPath = Yii::getPathOfAlias('webroot') . '/uploads/' . $filename;
-                    $uploadedFile->saveAs($uploadPath);
-                }
-
                 echo CJSON::encode([
                     'success' => true,
                     'service' => [
@@ -141,7 +96,6 @@ class ServicesController extends Controller
                 ]);
                 Yii::app()->end();
             } else {
-                // Return validation errors if save fails
                 echo CJSON::encode([
                     'success' => false,
                     'errors' => $model->getErrors(),
@@ -150,13 +104,9 @@ class ServicesController extends Controller
             }
         }
 
-        // If no POST data or other failure
         echo CJSON::encode(['success' => false, 'message' => 'No data received.']);
         Yii::app()->end();
     }
-
-
-
 
     public function actionDelete()
     {
@@ -174,4 +124,66 @@ class ServicesController extends Controller
         }
     }
 
+public function actionGetSlots($id)
+{
+    Yii::app()->controller->layout = false;
+    header('Content-Type: application/json');
+
+    $service = Services::model()->findByPk($id);
+    $date = Yii::app()->request->getParam('date'); // Format: YYYY-MM-DD
+
+    if (!$service || !$date) {
+        echo CJSON::encode(['error' => 'Invalid service or date']);
+        Yii::app()->end();
+    }
+
+    $start = strtotime($service->start_time);
+    $end = strtotime($service->end_time);
+
+    $duration = is_numeric($service->duration)
+        ? (int)$service->duration
+        : $this->parseDuration($service->duration);
+
+    $slots = [];
+
+    while (($start + $duration * 60) <= $end) {
+        $slotTime = date('H:i', $start);
+        $displayTime = date('g:i A', $start);
+
+        // Check if this slot is booked on the given date
+        $alreadyBooked = Appointments::model()->exists(
+            'service_id = :service_id AND appointment_date = :date AND appointment_time = :time',
+            [
+                ':service_id' => $id,
+                ':date' => $date,
+                ':time' => $slotTime,
+            ]
+        );
+
+        $slots[] = [
+            'time' => $displayTime,
+            'booked' => $alreadyBooked,
+        ];
+
+        $start += $duration * 60;
+    }
+
+    echo CJSON::encode($slots);
+    Yii::app()->end();
+}
+
+
+    
+    public function actionview($id)
+    {
+        $model = Services::model()->with('provider')->findByPk($id);
+        if ($model === null) {
+            throw new CHttpException(404, 'The requested service does not exist.');
+        }
+
+        $this->render('details', [
+            'model' => $model,
+            'provider' => $model->provider, // pass user info to view
+        ]);
+    }
 }

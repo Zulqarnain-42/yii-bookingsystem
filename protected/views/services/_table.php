@@ -14,8 +14,8 @@
                 <td class="border px-4 py-2 service-name"><?php echo CHtml::encode($service->name); ?></td>
                 <td class="border px-4 py-2 service-description"><?php echo CHtml::encode($service->description); ?></td>
                 <td class="border px-4 py-2 flex gap-2">
-                    <button onclick="editService(<?php echo $service->id; ?>)" class="text-blue-500">Edit</button>
-                    <button onclick="confirmDelete(<?php echo $service->id; ?>, this)" class="text-red-500">Delete</button>
+                    <button onclick="editService(<?php echo $service->id; ?>)" class="edit-btn bg-blue-500 text-white px-3 py-1 rounded">Edit</button>
+                    <button onclick="confirmDelete(<?php echo $service->id; ?>, this)" class="cancel-btn bg-red-600 text-white px-3 py-1 rounded">Delete</button>
                 </td>
             </tr>
         <?php endforeach; ?>

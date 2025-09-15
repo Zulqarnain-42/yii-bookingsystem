@@ -12,6 +12,9 @@ class Services extends CActiveRecord
 {
 	public $start_time;
 	public $end_time;
+	public $duration;
+	public $user_id; 
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -31,14 +34,14 @@ class Services extends CActiveRecord
 			array('name', 'required'),
 			array('name', 'length', 'max'=>50),
 			array('description', 'safe'),
-			array('image', 'file', 'types'=>'jpg, jpeg, png, gif', 'allowEmpty'=>true),
+			array('duration', 'numerical', 'integerOnly'=>true, 'min'=>1, 'message'=>'Duration must be a positive integer.'),
 			array('start_time, end_time', 'match', 
             	'pattern'=>'/^([01]\d|2[0-3]):([0-5]\d)$/', 
             	'message'=>'{attribute} must be in HH:MM format.'
         	),			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, name, description, start_time, end_time, image', 'safe', 'on'=>'search'),
+			array('id, name, description, start_time,user_id, end_time,duration', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,6 +57,7 @@ class Services extends CActiveRecord
         	'appointments' => array(self::HAS_MANY, 'Appointments', 'service_id'), // Service has many appointments
 		);
 	}
+
 
 	/**
 	 * @return array customized attribute labels (name=>label)
