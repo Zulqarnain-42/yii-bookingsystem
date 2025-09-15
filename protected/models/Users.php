@@ -43,6 +43,11 @@ class Users extends CActiveRecord
         );
 	}
 
+	public static function isAdminOrStaff() {
+		$role = Yii::app()->user->getState('role');
+		return in_array($role, ['admin', 'staff']);
+	}
+
 	/**
 	 * @return array relational rules.
 	 */

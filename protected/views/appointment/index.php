@@ -1,7 +1,4 @@
 
-
-
-
 <div class="container mx-auto mt-10">
     <h1 class="text-2xl font-bold mb-4">Appointments</h1>
     <!-- Search Form -->

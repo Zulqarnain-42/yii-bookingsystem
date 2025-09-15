@@ -2076,3 +2076,30 @@ Stack trace:
 REQUEST_URI=/index.php?r=site/appointmentStats
 HTTP_REFERER=http://localhost:8080/index.php?r=site/dashboard
 ---
+2025/09/15 12:44:34 [error] [php] include(User.php): failed to open stream: No such file or directory (C:\yii-1.1.18\framework\YiiBase.php:432)
+Stack trace:
+#0 E:\yii-bookingsystem\protected\views\layouts\main.php(50): spl_autoload_call()
+#1 C:\yii-1.1.18\framework\web\CBaseController.php(126): require()
+#2 C:\yii-1.1.18\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#3 C:\yii-1.1.18\framework\web\widgets\CContentDecorator.php(76): SiteController->renderFile()
+#4 C:\yii-1.1.18\framework\web\widgets\CContentDecorator.php(54): CContentDecorator->decorate()
+#5 C:\yii-1.1.18\framework\web\widgets\COutputProcessor.php(44): CContentDecorator->processOutput()
+#6 C:\yii-1.1.18\framework\web\CBaseController.php(215): CContentDecorator->run()
+#7 C:\yii-1.1.18\framework\web\CBaseController.php(309): SiteController->endWidget()
+#8 E:\yii-bookingsystem\protected\views\layouts\column1.php(6): SiteController->endContent()
+#9 C:\yii-1.1.18\framework\web\CBaseController.php(126): require()
+#10 C:\yii-1.1.18\framework\web\CBaseController.php(95): SiteController->renderInternal()
+#11 C:\yii-1.1.18\framework\web\CController.php(787): SiteController->renderFile()
+#12 E:\yii-bookingsystem\protected\controllers\SiteController.php(45): SiteController->render()
+#13 C:\yii-1.1.18\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#14 C:\yii-1.1.18\framework\web\CController.php(308): CInlineAction->runWithParams()
+#15 C:\yii-1.1.18\framework\web\CController.php(286): SiteController->runAction()
+#16 C:\yii-1.1.18\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#17 C:\yii-1.1.18\framework\web\CWebApplication.php(282): SiteController->run()
+#18 C:\yii-1.1.18\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#19 C:\yii-1.1.18\framework\base\CApplication.php(185): CWebApplication->processRequest()
+#20 E:\yii-bookingsystem\index.php(13): CWebApplication->run()
+REQUEST_URI=/index.php?r=site/index
+in E:\yii-bookingsystem\protected\views\layouts\main.php (50)
+in E:\yii-bookingsystem\protected\views\layouts\column1.php (6)
+in E:\yii-bookingsystem\protected\controllers\SiteController.php (45)

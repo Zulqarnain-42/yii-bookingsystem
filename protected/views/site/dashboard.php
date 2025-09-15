@@ -1,4 +1,4 @@
- <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-6">
     <!-- Appointments Today -->
     <div class="bg-white shadow rounded border-l-4 border-green-500 p-6">
         <h5 class="text-green-600 text-lg font-semibold mb-2">Today's Appointments</h5>
@@ -16,7 +16,20 @@
         <h5 class="text-blue-600 text-lg font-semibold mb-2">This Month</h5>
         <p id="month-count" class="text-5xl font-bold text-gray-900">0</p>
     </div>
+
+    <!-- Completed Count -->
+    <div class="bg-white shadow rounded border-l-4 border-blue-500 p-6">
+        <h5 class="text-blue-600 text-lg font-semibold mb-2">Completed Count</h5>
+        <p id="completed-count" class="text-5xl font-bold text-gray-900">0</p>
+    </div>
+
+    <!-- Cancelled Count -->
+    <div class="bg-white shadow rounded border-l-4 border-blue-500 p-6">
+        <h5 class="text-blue-600 text-lg font-semibold mb-2">Cancelled Count</h5>
+        <p id="cancelled-count" class="text-5xl font-bold text-gray-900">0</p>
+    </div>
 </div>
+
    
 <div id="calendar" class="w-full md:w-3/6 h-[600px] bg-white shadow-lg rounded-lg p-4"></div>
 
@@ -29,6 +42,8 @@
             document.getElementById('today-count').textContent = data.today ?? 0;
             document.getElementById('week-count').textContent = data.week ?? 0;
             document.getElementById('month-count').textContent = data.month ?? 0;
+            document.getElementById('completed-count').textContent = data.completed ?? 0;
+            document.getElementById('cancelled-count').textContent = data.cancelled ?? 0;
         })
         .catch(error => console.error('Error:', error));
     });

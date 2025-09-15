@@ -19,15 +19,14 @@
                 <td class="p-3 service-time"><?php echo CHtml::encode($appointment->appointment_time); ?></td>
                 <td class="p-3 service-status"><?php echo CHtml::encode(ucfirst($appointment->status)); ?></td>
                 <td class="p-3 service-status"><?php echo CHtml::encode(ucfirst($appointment->appointment_status)); ?></td>
-                    <td class="p-3">
-                        <?php if (strtolower($appointment->appointment_status) !== 'cancelled' && strtolower($appointment->appointment_status) !== 'completed'): ?>
-                            <?php if (Yii::app()->user->role !== 'staff' || Yii::app()->user->role === 'admin'): ?>
-                                <button class="complete-btn bg-blue-500 text-white px-3 py-1 rounded" data-id="<?php echo $appointment->id; ?>">Complete</button>
-                            <?php endif; ?>
-                            <button class="cancel-btn bg-red-600 text-white px-3 py-1 rounded" data-id="<?php echo $appointment->id; ?>">Cancel</button>
+                <td class="p-3">
+                    <?php if (strtolower($appointment->appointment_status) !== 'cancelled' && strtolower($appointment->appointment_status) !== 'completed'): ?>
+                        <?php if (Yii::app()->user->role === 'admin'): ?>
+                            <button class="complete-btn bg-blue-500 text-white px-3 py-1 rounded" data-id="<?php echo $appointment->id; ?>">Complete</button>
                         <?php endif; ?>
-
-                    </td>
+                        <button class="cancel-btn bg-red-600 text-white px-3 py-1 rounded" data-id="<?php echo $appointment->id; ?>">Cancel</button>
+                    <?php endif; ?>
+                </td>
             </tr>
         <?php endforeach; ?>
     </tbody>
@@ -44,11 +43,6 @@
     ]);
     ?>
 </div>
-
-
-<!-- Toast Notification -->
-<div id="toast" class="fixed bottom-6 right-6 px-4 py-3 rounded shadow-lg text-white hidden z-50 transition-opacity duration-300"></div>
-
 
 <script>
 

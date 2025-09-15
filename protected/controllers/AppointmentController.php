@@ -190,11 +190,19 @@ class AppointmentController extends Controller
     {
         // Assuming the user is authenticated
         $userId = Yii::app()->user->id;
+        $isAdmin = Yii::app()->user->role === 'admin';
 
-        // Fetch all appointments for the logged-in user
-        $appointments = Appointments::model()->findAllByAttributes([
-            'user_id' => $userId
-        ]);
+        // Initialize the condition for fetching appointments
+        $criteria = new CDbCriteria();
+        $criteria->compare('appointment_status', 'Pending'); // Only show pending appointments
+
+        // If the user is not an admin, restrict appointments to the logged-in user
+        if (!$isAdmin) {
+            $criteria->compare('user_id', $userId);
+        }
+
+        // Fetch appointments based on the criteria
+        $appointments = Appointments::model()->findAll($criteria);
 
         $events = [];
         foreach ($appointments as $appointment) {
@@ -204,13 +212,14 @@ class AppointmentController extends Controller
                 'start' => $appointment->appointment_date . 'T' . $appointment->appointment_time, // FullCalendar expects this format
                 'end' => $appointment->appointment_date . 'T' . $appointment->appointment_time, // Optional: adjust if there's a duration
                 'description' => $appointment->notes,
-                'status' => ucfirst($appointment->status), // You can include any status or field as needed
+                'status' => ucfirst($appointment->appointment_status), // You can include any status or field as needed
             ];
         }
 
         // Send the response as JSON
         echo CJSON::encode($events);
         Yii::app()->end();
+
     }
 
 

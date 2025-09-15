@@ -14,30 +14,24 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
-	<!-- FullCalendar CSS -->
+	
+	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
 
-<!-- FullCalendar JS -->    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
-
-
-
-
-<!-- Add Tailwind CSS -->
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<!-- Add Tailwind CSS -->
+	 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 
 	<style>
-		#appointment-section {
-    transition: all 0.3s ease-in-out;
-}
+	#appointment-section {
+		transition: all 0.3s ease-in-out;
+	}
 	</style>
 </head>
 
 <body>
-	<?php
-Yii::app()->clientScript->registerCoreScript('jquery');
-?>
+	<?php Yii::app()->clientScript->registerCoreScript('jquery'); ?>
 
 <div class="container" id="page">
 
@@ -53,8 +47,8 @@ Yii::app()->clientScript->registerCoreScript('jquery');
 				array('label'=>'Register', 'url'=>array('/site/register'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Dashboard', 'url'=>array('/site/dashboard'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Profile', 'url'=>array('/user/profile'), 'visible'=>!Yii::app()->user->isGuest),
-        		array('label' => 'Users', 'url' => array('/user/index'), 'visible' => Yii::app()->user->getState('role') === 'admin'),
-				array('label'=>'Services', 'url'=>array('/services/index'), 'visible'=>Yii::app()->user->getState('role') === 'admin'),
+        		array('label' => 'Users', 'url' => array('/user/index'), 'visible' => Users::isAdminOrStaff()),
+				array('label'=>'Services', 'url'=>array('/services/index'), 'visible'=>Users::isAdminOrStaff()),
 				array('label'=>'Appointments', 'url'=>array('/appointment/index'), 'visible'=>!Yii::app()->user->isGuest),
 				array('label'=>'Logout', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),

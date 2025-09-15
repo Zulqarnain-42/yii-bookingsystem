@@ -35,9 +35,6 @@ $this->breadcrumbs = array('Login');
         <div class="text-red-600 text-sm mt-1">
           <?php echo $form->error($model, 'password'); ?>
         </div>
-        <p class="text-xs text-gray-500 mt-2">
-          Hint: You may login with <kbd class="px-1 bg-gray-200 rounded">demo</kbd>/<kbd class="px-1 bg-gray-200 rounded">demo</kbd> or <kbd class="px-1 bg-gray-200 rounded">admin</kbd>/<kbd class="px-1 bg-gray-200 rounded">admin</kbd>.
-        </p>
       </div>
 
       <div class="mb-4 flex items-center">
